@@ -1,5 +1,7 @@
 // handles event fetching from ticketmaster and filtering with rate limiting protections
 
+import { DMA_REGISTRY } from '#constants/dmaRegistry';
+
 // safely retrieves API key
 const API_KEY = typeof import.meta !== 'undefined' && import.meta.env
     ? import.meta.env.VITE_TM_KEY
@@ -45,4 +47,22 @@ export const filterEvents = (events, maxOccurrences = 3) => {
         // include event only if under occurrence threshold
         return eventCount[name] <= maxOccurrences;
     });
+};
+
+
+export const fetchAllDmaEvents = async () => {
+    const allEvents = [];
+
+    for (const { dmaId, name } of DMA_REGISTRY) {
+        try {
+            console.log(`Fetching events for DMA ${dmaId} (${name})...`);
+            const events = await fetchEvents(dmaId);
+            allEvents.push(...events);
+            await new Promise(resolve => setTimeout(resolve, 500)); // Rate limit protection
+        } catch (error) {
+            console.error(`Failed DMA ${dmaId}:`, error.message);
+        }
+    }
+
+    return filterEvents(allEvents);
 };

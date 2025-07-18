@@ -14,6 +14,9 @@ export const normalizeEvent = (event) => {
         // media
         image_urls: event.images?.[0]?.url || null,
 
+        // preserve DMA ID from ticketmaster
+        dmaId: event.dmaId || venue.dma?.dmaId,
+
         // location
         venue: {
             name: venue.name || 'Unknown Venue',

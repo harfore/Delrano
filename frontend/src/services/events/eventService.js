@@ -1,8 +1,8 @@
-import { normalizeEvent } from './normalizers/ticketmaster';
-import { findOrCreateCity } from '../cityService';
-import { findOrCreateTour } from './tourService';
-import { findOrCreateVenue } from './venueService';
-import { createConcertIfNotExists } from './concertService';
+import { normalizeEvent } from '../normalizers/ticketmasterNormalizer.js';
+import { findOrCreateCity } from '../cityService.js';
+import { findOrCreateTour } from './tourService.js';
+import { findOrCreateVenue } from './venueService.js';
+import { createConcertIfNotExists } from './concertService.js';
 
 export const saveConcertAndTour = async (rawEvent) => {
   try {
@@ -11,13 +11,14 @@ export const saveConcertAndTour = async (rawEvent) => {
     // ensure city exists (for concert venue)
     const cityId = await findOrCreateCity(
       event.venue.city,
-      event.venue.country
+      event.venue.country,
+      rawEvent.dmaId
     );
 
     // 2. ensure venue exists (linked to city)
     const venueId = await findOrCreateVenue({
       ...event.venue,
-      city_id: cityId
+      city_id: cityId,
     });
 
     // 3. find or create tour

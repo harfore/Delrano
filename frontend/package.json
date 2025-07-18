@@ -7,7 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "feed-all": "node feedAllCities.js",
+    "feed-once": "node -e 'require(\"./feedAllCities.js\").feedAllCities().then(() => process.exit(0))'",
+    "test-flow": "node src/services/tests/testEventFlow.js"
+  },
+  "imports": {
+    "#constants/*": "./src/constants/*.js"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
