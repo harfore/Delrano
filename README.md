@@ -16,12 +16,13 @@ localhost:5173
 #### Check the API at localhost:3000/api-docs
 
 ## Tests
-Run tests with npm test and from the frontend, you'll see displayed:
-√ a test that goes through the multi-step login process.
-from the backend:
-√ a test checking that the register function creates a user and returns a token
-√ a test checking that the login function succeeds when provided with valid credentials
-√ a test checking that the verify function returns user data when provided a valid token
+Run tests with npm test and from the frontend, you'll see displayed:<br>
+√ a test that goes through the multi-step login process.<br>
+
+from the backend:<br>
+√ a test checking that the register function creates a user and returns a token<br>
+√ a test checking that the login function succeeds when provided with valid credentials<br>
+√ a test checking that the verify function returns user data when provided a valid token<br>
 
 
 
