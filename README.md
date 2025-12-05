@@ -6,7 +6,7 @@
 After quickly setting up your profile, you'll be able to review your past concerts as you wish. 
 Stay tuned with upcoming events in your area and find all the information you need.
 
-## Cloning the repo
+## Cloning the repository
 #### Prerequisites:
 Make sure to have node and npm installed before your proceed.
 
