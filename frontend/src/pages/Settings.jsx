@@ -17,7 +17,7 @@ const Settings = () => {
     return (
         <div className='page'>
             <div className='page-content'>
-                <h2 className='page-headline'>User {userName} | Settings</h2>
+                <h1 className='page-headline'>User {userName} | Settings</h1>
                 {
                     isLoggedIn ? (
                         <div className='settings-layout'>

@@ -19,6 +19,7 @@
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: var(--shadow-md);
+    text-align: center;
 }
 
 .stepper-header {

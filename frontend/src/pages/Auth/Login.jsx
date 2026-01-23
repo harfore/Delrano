@@ -142,7 +142,7 @@ const Login = () => {
     };
 
     return (
-        <div className='page page-login'>
+        <div className='page'>
             <h1 className='page-headline'>Welcome back!</h1>
             <div className='stepper-container'>
                 {submitError && (
@@ -200,6 +200,7 @@ const Login = () => {
                                     type="button"
                                     onClick={handleBack}
                                     disabled={loading}
+                                    className='button'
                                 >
                                     Back
                                 </button>
