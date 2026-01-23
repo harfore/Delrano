@@ -1,8 +1,7 @@
-import { fetchEvents } from '../services/ticketmasterService';
-import { saveConcertAndTour } from '../services/events/concertService';
+import cron from 'node-cron';
 import { DMA_REGISTRY } from '../constants/dmaRegistry';
 
-const FEED_INTERVAL_MS = 6 * 60 * 60 * 1000; // 6 hours
+// const FEED_INTERVAL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 class CityFeeder {
     constructor() {
@@ -10,22 +9,24 @@ class CityFeeder {
     }
 
     async feedAllCities() {
-        if (this.isRunning) return;
+        if (this.isRunning) return
         this.isRunning = true;
 
         try {
             for (const dma of DMA_REGISTRY) {
                 await this.processDma(dma);
             }
+        } catch (err) {
+            console.error('CityFeeder failed:', err);
         } finally {
             this.isRunning = false;
             setTimeout(() => this.feedAllCities(), FEED_INTERVAL_MS);
         }
     }
 
-    async processDma({ dmaId, name }) {
+    async processDma({ dmaId }) {
+
         try {
-            console.log(`Processing ${name} (DMA ${dmaId})...`);
             const events = await fetchEvents(dmaId);
 
             for (const event of events) {
@@ -37,6 +38,7 @@ class CityFeeder {
                 } catch (error) {
                     console.error(`Failed to save ${event.name}:`, error.message);
                 }
+
                 await new Promise(resolve => setTimeout(resolve, 200)); // rate limiting
             }
         } catch (error) {
@@ -45,7 +47,15 @@ class CityFeeder {
     }
 }
 
+const cityFeeder = new CityFeeder();
+
+cron.schedule('0 */6 * * *', () => {
+    feeder.feedAllCities();
+});
+
 // execution
 if (import.meta.url === `file://${process.argv[1]}`) {
     new CityFeeder().feedAllCities();
 }
+
+export default cityFeeder;

@@ -10,16 +10,15 @@ const testFlow = async () => {
     try {
         console.log(`Testing with ${TEST_DMA.name} (DMA ${TEST_DMA.dmaId})...`);
 
-        // 1. Fetch events from Ticketmaster
+        // 1. fetch events from ticketmaster
         const events = await fetchEvents(TEST_DMA.dmaId);
         console.log(`Found ${events.length} events`);
 
-        // 2. Process test batch
         for (const [index, event] of events.slice(0, MAX_EVENTS).entries()) {
             try {
                 console.log(`\nProcessing ${index + 1}/${MAX_EVENTS}: ${event.name}`);
 
-                // 3. Save to your database
+                // save to database
                 const result = await saveConcertAndTour({
                     ...event,
                     dmaId: TEST_DMA.dmaId // pass DMA ID through

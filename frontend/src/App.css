@@ -1,36 +1,136 @@
 #root {
-  max-width: 1200px;
   margin: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  list-style: none;
+  color: var(--white);
+  background-color: var(--primary);
+}
+
+:root {
+  --primary: #161616;
+  --secondary: #000000;
+  --blue: #0700CC;
+  --white: #fff;
+  --success: #20d400;
+  --error: #FF1010;
+}
+
+:root {
+  --fs-heading-lg: 2.5rem;
+  --fs-heading-md: 2rem;
+  --fs-heading-sm: 1.25rem;
+  --fs-button: 1rem;
+  --fs-body-dk: 1rem;
+  --fs-body-mb: 0.8rem;
+  --fs-caption-dk: 0.8rem;
+  --fs-caption-mb: 0.6rem;
+}
+
+:root {
+  --breakpoint-sm: 36em;
+  --breakpoint-md: 48em;
+  --breakpoint-lg: 64em;
+  --breakpoint-xl: 80em;
+}
+
+:root {
+  --space-xs: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 8%;
+}
+
+:root {
+  --radius-sm: 5%;
+  --radius-md: 8px;
+  --radius-lg: 20px;
+}
+
+:root {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+:root {
+  --z-dropdown: 100;
+  --z-modal: 1000;
+  --z-toast: 1100;
+}
+
+:root {
+  --ease-default: ease-in-out;
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--primary);
+  display: flex;
+  place-items: center;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 8%;
+  background-color: var(--primary);
+}
+
+.page-content {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.page-headline {
+  margin-top: var(--space-md);
+  font-size: var(--fs-heading-md);
   text-align: center;
+  padding-top: var(--space-md);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.button {
+  font-size: var(--fs-body-mb);
+  background-color: var(--blue);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs) var(--space-md);
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
+@media (min-width: 48em) {
+  button {
+    font-size: var(--fs-body-dk);
+    padding: 1rem 2rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (min-width: 64em) {
+  button {
+    padding: 1.25rem 2.5rem;
   }
 }
+
+@media (min-width: 80em) {
+  button {
+    padding: 1.5rem 2.75rem;
+  }
+}
+
+@media (min-width: 48em) {
+
+  .page-headline {
+    margin-top: var(--space-xl);
+  }
+}
+
+@media (min-width: 64em) {
+  .footer {
+    display: none;
+  }
+}
+
+@media (min-width: 80em) {}

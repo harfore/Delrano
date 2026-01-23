@@ -5,19 +5,18 @@ import TourTester from "../services/tests/tourTester";
 import VenueTester from "../services/tests/venueTester";
 
 const TestPage = () => {
-    return (
-        <div className="test-page">
-            <h1>Service Tests</h1>
+  return (
+    <div className="test-page">
+      <h1>Service Tests</h1>
 
-            {/* Option 1: Use individual testers */}
-            <div className="test-group">
-                <CityTester />
-                <VenueTester />
-                <TourTester />
-                <ConcertTester />
-            </div>
+      <div className="test-group">
+        <CityTester />
+        <VenueTester />
+        <TourTester />
+        <ConcertTester />
+      </div>
 
-            <style jsx>{`
+      <style jsx>{`
         .test-page {
           padding: 2rem;
           max-width: 1200px;
@@ -30,8 +29,8 @@ const TestPage = () => {
           margin-top: 2rem;
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default TestPage;

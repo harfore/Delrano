@@ -12,10 +12,14 @@ export default function NewYorkConcerts() {
             try {
                 const allConcerts = await getAllConcerts();
 
-                const nyConcerts = allConcerts.filter(concert =>
-                    concert.venue?.city?.name === 'New York' ||
-                    concert.venue?.city === 'New York'
+                const now = new Date();
+
+                const nyConcerts = allConcerts.filter(
+                    concert => concert.city_name === 'New York' &&
+                        new Date(concert.date) >= now
                 );
+
+                nyConcerts.sort((a, b) => new Date(a.date) - new Date(b.date));
 
                 setConcerts(nyConcerts);
             } catch (err) {
@@ -32,28 +36,30 @@ export default function NewYorkConcerts() {
     if (error) return <div className="error">Error: {error}</div>;
 
     return (
-        <div className="concerts-container">
+        <div className="concerts-container" style={{ margin: '15rem' }}>
             <h1>Concerts in {cityFilter}</h1>
 
-            {concerts.length === 0 ? (
-                <p>No upcoming concerts found in {cityFilter}</p>
-            ) : (
-                <div className="concerts-grid">
-                    {concerts.map(concert => (
-                        <div key={concert.id} className="concert-card">
-                            <h3>{concert.tour?.name || 'Unnamed Tour'}</h3>
-                            <div className="details">
-                                <p><strong>Venue:</strong> {concert.venue?.name || 'Unknown venue'}</p>
-                                <p><strong>Date:</strong> {new Date(concert.date).toLocaleDateString()}</p>
-                                <p><strong>Time:</strong> {new Date(concert.date).toLocaleTimeString()}</p>
+            {
+                concerts.length === 0 ? (
+                    <p>Try again, {cityFilter}</p>
+                ) : (
+                    <div className="concerts-grid">
+                        {concerts.map(concert => (
+                            <div key={concert.concert_id} className="concert-card">
+                                <h3>{concert.tour_name || 'Tour'}</h3>
+                                <div className="details">
+                                    <p> {concert.venue_name || ' '}</p>
+                                    <p><strong>Date:</strong> {new Date(concert.date).toLocaleDateString()}</p>
+                                    {/* <p><strong>Time:</strong> {new Date(concert.date).toLocaleTimeString()}</p>
                                 {concert.special_notes && (
                                     <p className="notes">{concert.special_notes}</p>
-                                )}
+                                )} */}
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            )}
-        </div>
+                        ))}
+                    </div>
+                )
+            }
+        </div >
     );
 }

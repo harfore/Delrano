@@ -3,7 +3,6 @@ const { checkVenue, createVenue } = require('../controllers/venueController.js')
 
 const router = express.Router();
 
-// Enhanced CORS middleware
 router.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');

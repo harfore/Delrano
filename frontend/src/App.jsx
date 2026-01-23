@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useContext } from 'react';
 import './App.css';
 import Header from './components/Header';
-import Renovation from './components/Renovation';
+// import Renovation from './components/Renovation';
 import routes from './routes';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 import { HIDE_RENOVATION_PATHS } from './constants';
@@ -17,13 +17,13 @@ function AppContent() {
   const shouldShowRenovation = !HIDE_RENOVATION_PATHS.includes(location.pathname);
 
   if (isLoading) {
-    return <div>Loading...</div>; // add custom loader later
+    return <div>Loading...</div>; // adding custom loader later
   }
 
   return (
     <>
       <Header />
-      {shouldShowRenovation && <Renovation />}
+      {/* {shouldShowRenovation && <Renovation />} */}
       <Routes>
         {routes.map((route, index) => (
           <Route key={index} path={route.path} element={route.element} />

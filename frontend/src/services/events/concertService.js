@@ -113,7 +113,16 @@ export const createConcert = async ({
 
 /**
  * gets all concerts
- * @returns {Promise<Array<{id: number, tour_id: number, venue_id: number, date: string}>>}
+ * @returns {Promise<Array<{
+ * id: number, 
+ * tour_id: number, 
+ * venue_id: number, 
+ * date: string
+ * special_notes: string | null,
+ * tour_name: string,
+ * venue_name: string,
+ * city_name: string
+ * }>>}
  */
 export const getAllConcerts = async () => {
     try {

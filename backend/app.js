@@ -22,6 +22,18 @@ const cityRoutes = require('./routes/cityRoutes');
 // });
 app.use(cors());
 
+const swaggerSpec = require('./config/swagger');
+
+app.get('/api-docs.json', (req, res) => {
+    console.log('[DEBUG] Swagger JSON requested');
+    res.json(swaggerSpec);
+});
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, {
+    swaggerUrl: 'http://localhost:3000/api-docs.json',
+    explorer: true
+}));
+
 app.get('/db-info', async (req, res) => {
     try {
         const dbInfo = await pool.query(`
@@ -79,7 +91,16 @@ app.use('/api', limiter);
 app.get('/health', (req, res) => res.status(200).send('OK'));
 
 // 7° API documentation
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+// const swaggerSpec = require('./config/swagger');
+
+// app.get('/api-docs.json', (req, res) => {
+//     res.json(swaggerSpec);
+// });
+
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, {
+//     swaggerUrl: 'http://localhost:3000/api-docs.json', // use absolute URL
+//     explorer: true
+// }));
 
 // 8° API routes
 app.use('/api/auth', authRoutes);

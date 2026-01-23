@@ -23,10 +23,10 @@ export default function ConcertTester() {
         setResult(null);
 
         const testData = {
-            tour_id: 2,
-            venue_id: 5,
-            date: '2023-06-10T20:00:00',
-            special_notes: 'Test concert'
+            tour_id: 8,
+            venue_id: 12,
+            date: '2025-11-01T19:00:00',
+            special_notes: '',
         };
 
         try {

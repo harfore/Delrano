@@ -1,10 +1,8 @@
-const bcrypt = require('bcrypt');
-
-// in-memory "database"
 const mockUsers = [];
 
 const pool = {
-    query: async (sql, params) => {
+    mockUsers,
+    query: jest.fn(async (sql, params) => {
         if (sql.includes('INSERT INTO users')) {
             const [email, username, password, country] = params;
             const newUser = {
@@ -19,13 +17,15 @@ const pool = {
         }
 
         if (sql.includes('SELECT * FROM users WHERE email')) {
-            const [email] = params;
-            const user = mockUsers.find(u => u.email === email);
+            const [identifier] = params;
+            const user = mockUsers.find(
+                u => u.email === identifier || u.username === identifier
+            );
             return { rows: user ? [user] : [] };
         }
 
-        throw new Error('Mock query not implemented');
-    }
+        return { rows: [] };
+    })
 };
 
 module.exports = pool;

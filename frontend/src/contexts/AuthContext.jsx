@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     const [authState, setAuthState] = useState({
         isLoggedIn: !!initialToken, // convert token presence to boolean
         userName: initialUser?.username || initialUser?.email || '',
-        isLoading: !!initialToken // set loading if no initial token (needs verification)
+        isLoading: !!initialToken // set loading if no initial token
     });
 
     useEffect(() => {
@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }) => {
         const responseInterceptor = axios.interceptors.response.use(
             response => response,
             error => {
-                // Removed the logout() call here
                 return Promise.reject(error);
             }
         );

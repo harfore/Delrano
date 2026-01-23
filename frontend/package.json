@@ -10,7 +10,12 @@
     "preview": "vite preview",
     "feed-all": "node feedAllCities.js",
     "feed-once": "node -e 'require(\"./feedAllCities.js\").feedAllCities().then(() => process.exit(0))'",
-    "test-flow": "node src/services/tests/testEventFlow.js"
+    "test-flow": "node src/services/tests/testEventFlow.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration"
   },
   "imports": {
     "#constants/*": "./src/constants/*.js"
@@ -19,26 +24,38 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@hookform/resolvers": "^3.10.0",
+    "@testing-library/react": "^16.3.0",
     "axios": "^1.8.4",
     "dotenv": "^16.4.7",
     "esbuild": "^0.24.2",
+    "jest-environment-jsdom": "^30.2.0",
     "jsonwebtoken": "^9.0.2",
     "node-fetch": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.29.0",
+    "winston": "^3.18.3",
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
     "@eslint/js": "^9.17.0",
+    "@jest/globals": "^30.2.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
+    "babel-jest": "^30.2.0",
     "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.2.0",
+    "jest-extended": "^6.0.0",
+    "supertest": "^7.1.4",
     "vite": "^6.0.5"
   }
 }

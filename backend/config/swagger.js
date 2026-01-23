@@ -1,10 +1,11 @@
 const swaggerJsdoc = require('swagger-jsdoc');
+const path = require('path');
 
 const options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Your API Documentation',
+            title: 'Delrano API Documentation',
             version: '1.0.0',
             description: 'Authentication API documentation',
         },
@@ -12,11 +13,7 @@ const options = {
             {
                 url: 'http://localhost:3000/api',
                 description: 'Development server',
-            },
-            {
-                url: 'https://api.yourdomain.com',
-                description: 'Production server',
-            },
+            }
         ],
         components: {
             securitySchemes: {
@@ -28,7 +25,7 @@ const options = {
             },
         },
     },
-    apis: ['./routes/*.js'], // Path to your route files
+    apis: [path.join(__dirname, '../routes/*.js')],
 };
 
 const specs = swaggerJsdoc(options);

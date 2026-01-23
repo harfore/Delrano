@@ -4,16 +4,18 @@ import Login from './pages/Auth/Login';
 import Profile from './pages/Profile';
 import TestPage from './components/TestPage';
 import NewYorkConcerts from './components/NewYorkTester';
-// import Renovation from './components/Renovation';
+import Renovation from './components/Renovation';
+import Settings from './pages/Settings';
 // import Popular from './pages/Popular';
 
 const routes = [
-    // { path: '/', element: <Login /> },
+    { path: '/', element: <Renovation /> },
     { path: '/join', element: <Join /> },
     { path: '/login', element: <Login /> },
     { path: '/profile', element: <Profile /> },
     { path: '/dev/tests', element: <TestPage /> },
-    { path: '/newyork', element: <NewYorkConcerts /> }
+    { path: '/dev/tests/newyork', element: <NewYorkConcerts /> },
+    { path: '/profile/settings', element: <Settings /> }
     // { path: '/popular', element: <Popular /> },
 ];
 

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import '../styles/Header.css';
+import '../styles/components/Header.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -28,38 +28,10 @@ function Header() {
     return (
         <header className="header">
             <div className="header-left">
-                <Link to="/" className="logo"><i>The Delrano</i></Link>
+                <Link to="/" className="logo"><i>Delrano</i></Link>
             </div>
 
             <div className='header-center'>
-                <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
-                    <NavLink to="/popular">Popular</NavLink>
-
-                    {isLoggedIn ? (
-                        <>
-                            <NavLink to="/profile">{userName}</NavLink>
-                            <button className="element logout-btn" onClick={handleLogout}>
-                                <FontAwesomeIcon icon={faSignOutAlt} />
-                                <span>Logout</span>
-                            </button>
-                        </>
-                    ) : (
-                        <>
-                            <NavLink to="/login">Login</NavLink>
-                            <NavLink to="/join">Join</NavLink>
-                        </>
-                    )}
-
-                    {/* <NavLink to="/users">Users</NavLink> */}
-                </nav>
-            </div>
-
-            <div className='header-right'>
-                <button className="hamburger" onClick={toggleMenu}>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                </button>
                 {/* search input */}
                 <div>
                     <input
@@ -68,9 +40,35 @@ function Header() {
                         placeholder="Search.."
                     />
                 </div>
+            </div>
+
+            <div className='header-right'>
                 <div className='search-icon'>
                     <Link to="/search"><FontAwesomeIcon icon={faSearch} /></Link>
                 </div>
+                <button className="hamburger" onClick={toggleMenu}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </button>
+                <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
+
+                    {isLoggedIn ? (
+                        <>
+                            <NavLink to="/profile">{userName}</NavLink>
+                            <button className="element button" onClick={handleLogout}>
+                                <FontAwesomeIcon icon={faSignOutAlt} className='header-svg' />
+                                <span>Logout</span>
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink className="header-menu-element" to="/login">Login</NavLink>
+                            <NavLink className="header-menu-element" to="/join">Join</NavLink>
+                        </>
+                    )}
+
+                </nav>
             </div>
         </header>
     );

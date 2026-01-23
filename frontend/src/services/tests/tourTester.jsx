@@ -23,10 +23,10 @@ export default function TourTester() {
         try {
             // service call with test data
             const id = await findOrCreateTour({
-                name: 'The Eras Tour',
-                artist_id: 1,
-                start_date: '2023-03-17',
-                end_date: '2024-12-08',
+                name: "This Tour May Contain New Music",
+                artist_id: 3,
+                start_date: '2026-01-22',
+                end_date: '2026-05-20',
             });
             setTourId(id); // store successful result
         } catch (err) {

@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import FormInput from "../../components/Auth/FormInput";
 import { AuthContext } from '../../contexts/AuthContext';
-import '../../styles/JoinLogin.css';
+import '../../styles/Auth.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Login = () => {
     const steps = [
         {
             label: '1',
-            description: 'Please enter your email or username.',
+            description: 'Please enter your email.',
             field: 'email-username',
         },
         {
@@ -36,7 +36,7 @@ const Login = () => {
     const schema = yup.object().shape({
         'email-username': yup
             .string()
-            .required('Email or username is required')
+            .required('Email is required')
             .test(
                 'is-email-or-username',
                 'Please enter a valid email or username',
@@ -142,7 +142,7 @@ const Login = () => {
     };
 
     return (
-        <div className='page'>
+        <div className='page page-login'>
             <h1 className='page-headline'>Welcome back!</h1>
             <div className='stepper-container'>
                 {submitError && (
@@ -167,16 +167,17 @@ const Login = () => {
 
                         {activeStep === 0 && (
                             <FormInput
-                                label="Email or username"
+                                label="Email"
                                 type="text"
                                 name="email-username"
                                 value={formData['email-username']}
                                 onChange={handleChange}
                                 error={touched['email-username'] && errors['email-username']}
-                                placeholder="Email or username"
+                                placeholder="Email"
                                 autoFocus
                             />
                         )}
+                        {/* ! only email works for now */}
 
                         {activeStep === 1 && (
                             <FormInput
@@ -209,6 +210,7 @@ const Login = () => {
                                     type="button"
                                     onClick={handleNext}
                                     disabled={loading}
+                                    className='button'
                                 >
                                     Next
                                 </button>
@@ -216,6 +218,7 @@ const Login = () => {
                                 <button
                                     type="submit"
                                     disabled={loading}
+                                    className='button'
                                 >
                                     {loading ? 'Logging in...' : 'Login'}
                                 </button>

@@ -2,4 +2,6 @@
     margin: auto;
     width: 100vw;
     text-align: center;
+    font-weight: bold;
+    font-size: var(--fs-body-desktop);
 }

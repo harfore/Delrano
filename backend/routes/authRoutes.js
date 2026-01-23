@@ -7,13 +7,13 @@ const validate = require('../middleware/validate');
 /**
  * @swagger
  * tags:
- *   name: Auth
+ *   name: Authentication
  *   description: User authentication
  */
 
 /**
- * @swagger
- * /api/auth/register:
+ * @openapi
+ * /auth/register:
  *   post:
  *     summary: Register a new user
  *     tags: [Authentication]
@@ -116,7 +116,7 @@ router.post(
 
 /**
  * @swagger
- * /api/auth/login:
+ * /auth/login:
  *   post:
  *     summary: Authenticate a user
  *     tags: [Authentication]

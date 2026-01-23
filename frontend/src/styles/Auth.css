@@ -1,0 +1,206 @@
+.auth-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    text-align: center;
+    background: var(--primary);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 15%, rgba(22, 22, 22, 1) 40%, rgba(22, 22, 22, 1) 61%, rgba(0, 0, 0, 1) 85%);
+}
+
+.stepper-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    background-color: #3a3a3a;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+}
+
+.stepper-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 2px solid #ccc;
+    color: #ccc;
+    font-weight: normal;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.step.active {
+    border-bottom-color: var(--blue);
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.stepper-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* .stepper-actions button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+} */
+
+.input-group {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-group .account-field {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid rgb(2, 2, 63);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: var(--white);
+    transition: border-color 0.3s ease;
+}
+
+.error {
+    width: 95%;
+    color: var(--error);
+    padding: 1.1rem;
+    border: solid 3px var(--error);
+    border-radius: 0.5rem;
+}
+
+.header-svg {
+    margin-right: 0.5rem;
+}
+
+@media (min-width: 600px) {
+
+    .stepper-container {
+        width: 80%;
+        padding: 2rem;
+    }
+
+    .step {
+        flex: 1 1 auto;
+        padding: 1.5rem 2rem;
+        font-size: 1rem;
+    }
+
+    .stepper-actions {
+        gap: 2rem;
+    }
+
+    /* .stepper-actions button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    } */
+}
+
+@media (min-width: 900px) {
+
+    .page {
+        flex-direction: row;
+        background: var(--secondary);
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 15%, rgba(22, 22, 22, 1) 40%, rgba(22, 22, 22, 1) 61%, rgba(0, 0, 0, 1) 85%);
+    }
+
+    .page-login {
+        flex-direction: column;
+        background: var(--secondary);
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 15%, rgba(22, 22, 22, 1) 40%, rgba(22, 22, 22, 1) 61%, rgba(0, 0, 0, 1) 85%);
+    }
+
+    .stepper-container {
+        width: 70%;
+        padding: 2rem 3rem;
+    }
+
+    .step {
+        padding: 1rem 5rem;
+    }
+
+    .stepper-actions {
+        gap: 3rem;
+    }
+
+    .upper-collection,
+    .lower-collection {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 35%;
+        padding: 1rem;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .collection-image {
+        width: 10rem !important;
+        height: auto;
+        aspect-ratio: 1/1;
+        margin: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .upper-collection,
+    .lower-collection {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 30%;
+    }
+
+    .collection-image {
+        max-width: 9rem;
+    }
+}
+
+.upper-collection,
+.lower-collection {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 0;
+    gap: 0.3rem;
+    max-height: 30%;
+    justify-content: center;
+    align-items: center;
+}
+
+.collection-image {
+    width: 7rem;
+    margin: 0.5rem;
+    border-radius: 5%;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.input-form {
+    margin-bottom: 2rem;
+}
+
+.input-set {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.input-field {
+    border: none;
+    height: 1.5rem;
+}

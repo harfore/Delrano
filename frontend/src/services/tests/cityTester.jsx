@@ -15,7 +15,7 @@ export default function CityTester() {
     const [error, setError] = useState(null); // error message storage
 
     const testCityFlow = async () => {
-        // Initialize state
+        // initialize state
         setIsLoading(true);
         setError(null);
         try {

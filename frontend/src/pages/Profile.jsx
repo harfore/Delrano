@@ -1,19 +1,35 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { NotFound } from '../components/NotFound';
-import '../styles/JoinLogin.css';
+import '../styles/Auth.css';
+
+const NavLink = ({ to, children }) => (
+    <Link className="element" to={to}>
+        <span>{children}</span>
+    </Link>
+);
 
 const Profile = () => {
     const { isLoggedIn, userName } = useContext(AuthContext);
 
     return (
         <div className='page'>
-            {isLoggedIn ? (
-                <h2>{userName}</h2>
-            ) : (
-                <NotFound />
-            )
-            }
+            <div className='page-content'>
+                {isLoggedIn ? (
+                    <div>
+                        <h2>{userName}</h2>
+                        <NavLink to="/profile/settings">
+                            <button className="button">
+                                <h2>Settings</h2>
+                            </button>
+                        </NavLink>
+                    </div>
+                ) : (
+                    <NotFound />
+                )
+                }
+            </div>
         </div>
     )
 }
