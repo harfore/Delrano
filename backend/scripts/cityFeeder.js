@@ -1,7 +1,6 @@
 import cron from 'node-cron';
 import { DMA_REGISTRY } from '../constants/dmaRegistry';
-
-// const FEED_INTERVAL_MS = 6 * 60 * 60 * 1000; // 6 hours
+const { normalizeEvent } = require('../utils/ticketmasterNormalizer')
 
 class CityFeeder {
     constructor() {
@@ -9,8 +8,12 @@ class CityFeeder {
     }
 
     async feedAllCities() {
-        if (this.isRunning) return
+        if (this.isRunning) {
+            console.log('CityFeeder already running, skipping.')
+            return
+        }
         this.isRunning = true;
+        console.log('CityFeeder started')
 
         try {
             for (const dma of DMA_REGISTRY) {
@@ -32,11 +35,12 @@ class CityFeeder {
             for (const event of events) {
                 try {
                     await saveConcertAndTour({
-                        ...event,
+                        ...rawEvent,
                         dmaId // pass DMA ID to service
-                    });
+                    })
                 } catch (error) {
-                    console.error(`Failed to save ${event.name}:`, error.message);
+                    console.error(`Failed to save ${rawEvent.name}:`,
+                        error.message);
                 }
 
                 await new Promise(resolve => setTimeout(resolve, 200)); // rate limiting
@@ -47,15 +51,4 @@ class CityFeeder {
     }
 }
 
-const cityFeeder = new CityFeeder();
-
-cron.schedule('0 */6 * * *', () => {
-    feeder.feedAllCities();
-});
-
-// execution
-if (import.meta.url === `file://${process.argv[1]}`) {
-    new CityFeeder().feedAllCities();
-}
-
-export default cityFeeder;
+export const cityFeeder = new CityFeeder();

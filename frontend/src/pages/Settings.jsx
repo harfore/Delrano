@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { NotFound } from '../components/NotFound';
+
 import '../styles/Settings.css'
 import '../styles/components/Form.css';
 

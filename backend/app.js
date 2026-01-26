@@ -7,6 +7,9 @@ const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
+const cron = require('node-cron');
+
+const { cityFeeder } = require('./feeds/cityFeeder');
 
 // import routes
 const authRoutes = require('./routes/authRoutes');
@@ -145,6 +148,11 @@ app.use((err, req, res, next) => {
         message,
         stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
     });
+});
+
+cron.schedule('0 */6 * * *', async () => {
+    console.log('[CRON] City feed started');
+    await cityFeeder.feedAllCities();
 });
 
 const PORT = process.env.PORT || 3000;

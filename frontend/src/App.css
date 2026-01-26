@@ -103,6 +103,11 @@ body {
   padding: var(--space-xs) var(--space-md);
   font-weight: bold;
   cursor: pointer;
+  margin: 0.5rem;
+}
+
+.icon-svg {
+  margin-right: 0.5rem;
 }
 
 @media (min-width: 48em) {

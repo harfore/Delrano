@@ -1,7 +1,11 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { NotFound } from '../components/NotFound';
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt, faGear } from '@fortawesome/free-solid-svg-icons';
 // import '../styles/Auth.css';
 
 const NavLink = ({ to, children }) => (
@@ -11,7 +15,17 @@ const NavLink = ({ to, children }) => (
 );
 
 const Profile = () => {
-    const { isLoggedIn, userName } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { isLoggedIn, userName, logout } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+    };
+
+    const redirectToSettings = () => {
+        navigate('/profile/settings');
+    };
 
     return (
         <div className='page'>
@@ -21,9 +35,14 @@ const Profile = () => {
                         <h2>{userName}</h2>
                         <NavLink to="/profile/settings">
                             <button className="button">
+                                <FontAwesomeIcon icon={faGear} onClick={redirectToSettings} className='icon-svg' />
                                 Settings
                             </button>
                         </NavLink>
+                        <button className="button" onClick={handleLogout}>
+                            <FontAwesomeIcon icon={faSignOutAlt} className='icon-svg' />
+                            Logout
+                        </button>
                     </div>
                 ) : (
                     <NotFound />
