@@ -1,5 +1,5 @@
 .button {
-    font-size: var(--fs-body-mb);
+    font-size: var(--fs-button);
     background-color: var(--blue);
     border-radius: var(--radius-md);
     padding: var(--space-xs) var(--space-md);
@@ -9,7 +9,7 @@
 
 @media (min-width: 48em) {
     button {
-        font-size: var(--fs-body-dk);
+        font-size: var(--fs-button);
         padding: 1rem 2rem;
     }
 }

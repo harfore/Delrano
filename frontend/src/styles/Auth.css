@@ -8,6 +8,10 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 15%, rgba(22, 22, 22, 1) 40%, rgba(22, 22, 22, 1) 61%, rgba(0, 0, 0, 1) 85%);
 }
 
+.auth-center {
+    width: 22rem;
+}
+
 .stepper-container {
     width: 80%;
     display: flex;
@@ -55,11 +59,6 @@
     flex-wrap: wrap;
 }
 
-/* .stepper-actions button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
-} */
-
 .input-group {
     padding: 1rem;
     margin-bottom: 1rem;
@@ -104,16 +103,11 @@
     .stepper-actions {
         gap: 2rem;
     }
-
-    /* .stepper-actions button {
-        padding: 1rem 2rem;
-        font-size: 1rem;
-    } */
 }
 
 @media (min-width: 900px) {
 
-    .page {
+    .auth-page {
         flex-direction: row;
         background: var(--secondary);
         background: linear-gradient(90deg, rgba(0, 0, 0, 1) 15%, rgba(22, 22, 22, 1) 40%, rgba(22, 22, 22, 1) 61%, rgba(0, 0, 0, 1) 85%);
@@ -189,19 +183,4 @@
     border-radius: 5%;
     object-fit: contain;
     flex-shrink: 0;
-}
-
-.input-form {
-    margin-bottom: 2rem;
-}
-
-.input-set {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-}
-
-.input-field {
-    border: none;
-    height: 1.5rem;
 }

@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { NotFound } from '../components/NotFound';
-import '../styles/Auth.css';
-import '../styles/Settings.css';
+import '../styles/Settings.css'
+import '../styles/components/Form.css';
 
 const NavLink = ({ to, children }) => (
     <Link className="element" to={to}>
@@ -16,8 +16,8 @@ const Settings = () => {
 
     return (
         <div className='page'>
+            <h1 className='page-headline'>User {userName} | Settings</h1>
             <div className='page-content'>
-                <h1 className='page-headline'>User {userName} | Settings</h1>
                 {
                     isLoggedIn ? (
                         <div className='settings-layout'>
@@ -51,7 +51,7 @@ const Settings = () => {
                                     >Update info
                                     </button>
                                 </div>
-                                <div className>
+                                <div className="preferences-settings">
 
                                 </div>
                             </div>

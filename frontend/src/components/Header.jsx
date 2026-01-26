@@ -56,9 +56,9 @@ function Header() {
                     {isLoggedIn ? (
                         <>
                             <NavLink to="/profile">{userName}</NavLink>
-                            <button className="element button" onClick={handleLogout}>
+                            <button className="button" onClick={handleLogout}>
                                 <FontAwesomeIcon icon={faSignOutAlt} className='header-svg' />
-                                <span>Logout</span>
+                                Logout
                             </button>
                         </>
                     ) : (

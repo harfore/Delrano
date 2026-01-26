@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { NotFound } from '../components/NotFound';
-import '../styles/Auth.css';
+// import '../styles/Auth.css';
 
 const NavLink = ({ to, children }) => (
     <Link className="element" to={to}>
@@ -21,7 +21,7 @@ const Profile = () => {
                         <h2>{userName}</h2>
                         <NavLink to="/profile/settings">
                             <button className="button">
-                                <h2>Settings</h2>
+                                Settings
                             </button>
                         </NavLink>
                     </div>
