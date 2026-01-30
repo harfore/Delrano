@@ -1,4 +1,3 @@
-import React from 'react';
 import CityTester from "../services/tests/cityTester";
 import ConcertTester from "../services/tests/concertTester";
 import TourTester from "../services/tests/tourTester";

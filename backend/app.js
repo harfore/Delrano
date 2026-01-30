@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -9,7 +8,9 @@ const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const cron = require('node-cron');
 
-const { cityFeeder } = require('./feeds/cityFeeder');
+require('dotenv').config({ path: __dirname + '/.env' });
+
+const cityFeeder = require('./scripts/cityFeeder');
 
 // import routes
 const authRoutes = require('./routes/authRoutes');

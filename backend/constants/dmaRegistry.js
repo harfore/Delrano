@@ -1,4 +1,4 @@
-export const DMA_REGISTRY = [
+const DMA_REGISTRY = [
     // united states
     { dmaId: 212, name: 'Abilene - Sweetwater', country: 'USA' },
     { dmaId: 213, name: 'Albany - Schenectady - Troy', country: 'USA' },
@@ -71,3 +71,5 @@ export const DMA_REGISTRY = [
     { dmaId: 803, name: 'Monterrey', country: 'Mexico' },
     { dmaId: 804, name: 'Guadalajara', country: 'Mexico' },
 ];
+
+module.exports = DMA_REGISTRY;

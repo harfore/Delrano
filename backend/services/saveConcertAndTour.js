@@ -18,7 +18,14 @@ const saveConcertAndTour = async (rawEvent) => {
             event.dmaId
         );
 
+        console.log('Got cityId:', cityId);
+
         const venueId = await findOrCreateVenue({
+            name: event.venue.name,
+            cityId
+        });
+
+        console.log('Creating/finding venue:', {
             name: event.venue.name,
             cityId
         });
@@ -46,3 +53,5 @@ const saveConcertAndTour = async (rawEvent) => {
         throw error;
     }
 }
+
+module.exports = { saveConcertAndTour };

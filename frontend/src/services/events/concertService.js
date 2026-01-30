@@ -2,49 +2,6 @@ const API_BASE_URL = 'http://localhost:3000';
 const CONCERTS_ENDPOINT = `${API_BASE_URL}/api/concerts`;
 
 /**
- * checks if a concert exists using tour_id + venue_id + date
- * @returns {Promise<{ exists: boolean }>}
- */
-export const checkConcertExists = async ({ tour_id, venue_id, date }) => {
-    try {
-        // make sure date is properly formatted (YYYY-MM-DD)
-        const formattedDate = new Date(date).toISOString().split('T')[0];
-
-        const res = await fetch(`${CONCERTS_ENDPOINT}/exists`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                tour_id: Number(tour_id),
-                venue_id: Number(venue_id),
-                date: formattedDate
-            })
-        });
-
-        // handle 404 specifically
-        if (res.status === 404) {
-            throw new Error('Endpoint not found - check your backend routes');
-        }
-
-        const responseData = await res.json();
-
-        if (!res.ok) {
-            throw new Error(responseData?.error || `Check concert failed (${res.status})`);
-        }
-
-        return responseData;
-    } catch (error) {
-        console.error('checkConcertExists error:', {
-            tour_id,
-            venue_id,
-            date,
-            error: error.message,
-            stack: error.stack
-        });
-        throw error;
-    }
-};
-
-/**
  * creates a new concert with minimal required fields
  * @returns {Promise<{ id: number }>} the new concert ID
  */
@@ -185,27 +142,6 @@ export const getConcertById = async (id) => {
     } catch (error) {
         console.error('getConcertById error:', {
             id,
-            error: error.message,
-            stack: error.stack
-        });
-        throw error;
-    }
-};
-
-/**
- * main interface: creates concert only if it doesn't exist
- * @returns {Promise<boolean>} true if created, false if already existed
- */
-export const createConcertIfNotExists = async (concertData) => {
-    try {
-        const { exists } = await checkConcertExists(concertData);
-        if (exists) return false;
-
-        await createConcert(concertData);
-        return true;
-    } catch (error) {
-        console.error('createConcertIfNotExists error:', {
-            concertData,
             error: error.message,
             stack: error.stack
         });

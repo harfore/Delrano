@@ -6,7 +6,7 @@
 //  - displays the resulting venue ID
 
 import { useState } from 'react';
-import { findOrCreateVenue } from '../events/venueService';
+// import { findOrCreateVenue } from '../events/venueService';
 
 export default function VenueTester() {
     const [venueId, setVenueId] = useState(null); // stores successful venue ID

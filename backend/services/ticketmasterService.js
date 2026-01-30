@@ -1,4 +1,5 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+require('dotenv').config({ path: __dirname + '/../.env' });
 
 const API_KEY = process.env.TM_API_KEY;
 
@@ -11,7 +12,7 @@ if (!API_KEY) {
 //  @returns {Promise<Array>} array of event objects
 //  @throws {Error} on API failure or missing data
 
-export const fetchEvents = async (dmaId) => {
+const fetchEvents = async (dmaId) => {
     const url = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=${dmaId}&apikey=${API_KEY}`;
 
     const res = await fetch(url);
@@ -22,3 +23,5 @@ export const fetchEvents = async (dmaId) => {
     const data = await res.json();
     return data._embedded?.events ?? [];
 };
+
+module.exports = { fetchEvents };

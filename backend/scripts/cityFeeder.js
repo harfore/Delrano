@@ -1,19 +1,21 @@
-import cron from 'node-cron';
-import { DMA_REGISTRY } from '../constants/dmaRegistry';
-const { normalizeEvent } = require('../utils/ticketmasterNormalizer')
+require('dotenv').config({ path: __dirname + '/../.env' });
+
+const DMA_REGISTRY = require('../constants/dmaRegistry');
+const { fetchEvents } = require('../services/ticketmasterService');
+const { saveConcertAndTour } = require('../services/saveConcertAndTour');
 
 class CityFeeder {
     constructor() {
         this.isRunning = false;
-    }
+    };
 
     async feedAllCities() {
         if (this.isRunning) {
-            console.log('CityFeeder already running, skipping.')
+            console.log('CityFeeder already running, skipping.');
             return
         }
         this.isRunning = true;
-        console.log('CityFeeder started')
+        console.log('CityFeeder started');
 
         try {
             for (const dma of DMA_REGISTRY) {
@@ -23,7 +25,6 @@ class CityFeeder {
             console.error('CityFeeder failed:', err);
         } finally {
             this.isRunning = false;
-            setTimeout(() => this.feedAllCities(), FEED_INTERVAL_MS);
         }
     }
 
@@ -32,7 +33,7 @@ class CityFeeder {
         try {
             const events = await fetchEvents(dmaId);
 
-            for (const event of events) {
+            for (const rawEvent of events) {
                 try {
                     await saveConcertAndTour({
                         ...rawEvent,
@@ -51,4 +52,4 @@ class CityFeeder {
     }
 }
 
-export const cityFeeder = new CityFeeder();
+module.exports = new CityFeeder();
