@@ -6,7 +6,7 @@ const { createConcertIfNotExists } = require('./concertService');
 
 const saveConcertAndTour = async (rawEvent) => {
     try {
-        const event = normalizeEvent(rawEvent);
+        const event = await normalizeEvent(rawEvent);
 
         if (!event.name || !event.start_date) {
             throw new Error('Invalid normalized event');
@@ -18,16 +18,18 @@ const saveConcertAndTour = async (rawEvent) => {
             event.dmaId
         );
 
-        console.log('Got cityId:', cityId);
-
         const venueId = await findOrCreateVenue({
             name: event.venue.name,
-            cityId
+            cityId,
+            country: event.venue.country
         });
 
-        console.log('Creating/finding venue:', {
-            name: event.venue.name,
-            cityId
+        console.log('Tour data:', {
+            name: event.name,
+            artist_id: event.artist_id,
+            start_date: event.start_date,
+            end_date: event.end_date,
+            image_urls: event.image_urls
         });
 
         const tourId = await findOrCreateTour({

@@ -9,9 +9,9 @@ const createConcertIfNotExists = async ({
     const result = await pool.query(
         `INSERT INTO concerts (tour_id, venue_id, date, special_notes)
         VALUES ($1, $2, $3, $4)
-        ON CONFLICT (tour_id, venue_id, date
+        ON CONFLICT (tour_id, venue_id, date)
         DO NOTHING
-        RETURNING id)`,
+        RETURNING concert_id`,
         [tour_id, venue_id, date, special_notes]
     );
 
