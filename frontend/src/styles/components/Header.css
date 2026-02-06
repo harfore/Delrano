@@ -11,6 +11,7 @@
     padding: 0.5rem 5vw;
     z-index: 1000;
     box-shadow: var(--shadow-md);
+    text-decoration: none;
 }
 
 .header-left,
@@ -18,6 +19,10 @@
 .header-right {
     display: flex;
     align-items: center;
+}
+
+.header-right {
+    position: relative;
 }
 
 .logo {
@@ -52,6 +57,10 @@
     transition: all 0.3s ease-in-out;
 }
 
+.desktop-menu {
+    display: none;
+}
+
 nav.menu {
     display: none;
     z-index: 1001;
@@ -60,8 +69,8 @@ nav.menu {
     margin: 0;
     top: 100%;
     right: 0;
-    left: 10%;
-    width: 70%;
+    /* left: 10%;
+    width: 70%; */
     text-align: center;
     background-color: transparent;
     padding: 0.5rem 0;
@@ -119,6 +128,10 @@ nav.menu.open {
     display: block;
 }
 
+.desktop-hamburger {
+    display: none;
+}
+
 @media (min-width: 48em) {
 
     .header {
@@ -154,5 +167,46 @@ nav.menu.open {
     /* hide the small icon on large screens */
     .search-icon {
         display: none;
+    }
+
+    .desktop-hamburger {
+        display: block;
+    }
+
+    .desktop-menu.open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        /* min-width: 160px;
+        min-height: 200px; */
+        background-color: transparent;
+        color: var(--white);
+        padding: 0.75rem;
+        box-shadow: var(--shadow-md);
+        z-index: 1002;
+    }
+
+    .desktop-menu a,
+    .desktop-menu button {
+        display: block;
+        width: 100%;
+        color: var(--white);
+        background: none;
+        border: none;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        cursor: pointer;
+        font-size: 0.95rem;
+        background-color: blue;
+        text-align: center;
+        margin: 0.5rem 0;
+        border-radius: 20px;
+    }
+
+    .desktop-menu a:hover,
+    .desktop-menu button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
     }
 }

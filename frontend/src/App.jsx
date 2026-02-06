@@ -14,11 +14,18 @@ function AppContent() {
   const authContext = useContext(AuthContext);
   const isLoading = authContext?.isLoading;
 
+  const { isLoggedIn, userName, logout } = useContext(AuthContext);
+
   const shouldShowRenovation = !HIDE_RENOVATION_PATHS.includes(location.pathname);
 
   if (isLoading) {
     return <div>Loading...</div>; // adding custom loader later
   }
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <>

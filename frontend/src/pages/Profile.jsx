@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { NotFound } from '../components/NotFound';
+import '../styles/Profile.css';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -33,6 +34,27 @@ const Profile = () => {
                 {isLoggedIn ? (
                     <div>
                         <h2>{userName}</h2>
+                        <div className='profile-section'>
+                            <div className='profile-section-title'>
+                                Favorites
+                            </div>
+                        </div>
+                        <div className='profile-section'>
+                            <div className='profile-section-title'>
+                                Recent events
+                            </div>
+
+                        </div>
+                        <div className='profile-section'>
+                            <div className='profile-section-title'>
+                                Crowd Notes
+                            </div>
+                        </div>
+                        <div className='profile-section'>
+                            <div className='profile-section-title'>
+
+                            </div>
+                        </div>
                         <NavLink to="/profile/settings">
                             <button className="button">
                                 <FontAwesomeIcon icon={faGear} onClick={redirectToSettings} className='icon-svg' />
