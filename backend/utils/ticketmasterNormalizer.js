@@ -5,11 +5,17 @@ const safeDate = (date) => date ?? null;
 const extractArtistName = (eventName) => {
     if (!eventName) return null;
 
-    let main = eventName.split(/[-:]/)[0].trim();
+    let name = eventName;
 
-    main = main.replace(/(?:Event|Concert|Ages\s?\d+\+).*$/i, '').trim();
+    name = name.replace(/\(.*?\)/g, '').trim();
 
-    return main || null;
+    name = name.split(/[-:]/)[0].trim();
+
+    name = name.replace(/'s\b.*$/i, '').trim();
+
+    name = name.replace(/(?:Event|Ages\s?\d+\+).*$/i, '').trim();
+
+    return name || null;
 };
 
 module.exports.normalizeEvent = async (event) => {
@@ -49,4 +55,4 @@ module.exports.normalizeEvent = async (event) => {
             country: venue.country?.name ?? null
         }
     };
-}
+};
