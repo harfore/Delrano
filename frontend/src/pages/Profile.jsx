@@ -34,26 +34,43 @@ const Profile = () => {
                 {isLoggedIn ? (
                     <div>
                         <h2>{userName}</h2>
-                        <div className='profile-section'>
-                            <div className='profile-section-title'>
-                                Favorites
-                            </div>
+                        <p className='bio'>and the stadium is where I feel at home</p>
+                        <div className='profile-numbers'>
+                            <h4>
+                                23<br /> followers
+                            </h4>
+                            <h4>
+                                14<br /> following
+                            </h4>
+                            <h4>
+                                12<br /> concerts
+                            </h4>
+                            <h4>
+                                20<br />crowd notes
+                            </h4>
                         </div>
-                        <div className='profile-section'>
-                            <div className='profile-section-title'>
-                                Recent events
+                        <div className='profile-display'>
+                            <div className='profile-section'>
+                                <div className='profile-section-title'>
+                                    Favorites
+                                </div>
                             </div>
+                            <div className='profile-section'>
+                                <div className='profile-section-title'>
+                                    Recent events
+                                </div>
 
-                        </div>
-                        <div className='profile-section'>
-                            <div className='profile-section-title'>
-                                Crowd Notes
                             </div>
-                        </div>
-                        <div className='profile-section'>
-                            <div className='profile-section-title'>
+                            <div className='profile-section'>
+                                <div className='profile-section-title'>
+                                    Crowd Notes
+                                </div>
+                            </div>
+                            {/* <div className='profile-section'>
+                                <div className='profile-section-title'>
 
-                            </div>
+                                </div>
+                            </div> */}
                         </div>
                         <NavLink to="/profile/settings">
                             <button className="button">

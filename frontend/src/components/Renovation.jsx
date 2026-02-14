@@ -12,4 +12,4 @@ function Renovation() {
     )
 }
 
-export default Renovation
+export default Renovation;

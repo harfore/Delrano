@@ -1,0 +1,18 @@
+.profile-display {
+    margin-top: 2rem;
+}
+
+.profile-numbers {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-section {
+    left: 0;
+    margin: 1rem 0;
+}
+
+.profile-section-title {
+    border-bottom: 2px solid red;
+    font-weight: bold;
+}
