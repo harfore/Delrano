@@ -49,7 +49,7 @@
 
 :root {
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-md: box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 :root {
@@ -104,6 +104,11 @@ body {
   font-weight: bold;
   cursor: pointer;
   margin: 0.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.button:hover {
+  background-color: var(--primary);
 }
 
 .icon-svg {

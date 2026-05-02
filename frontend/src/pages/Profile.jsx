@@ -24,6 +24,12 @@ const Profile = () => {
         navigate('/');
     };
 
+    // const getFollowerCount = (token) = {}
+    const followers_count = 23;
+    const following_count = 14;
+    const concert_count = 12;
+    const crowd_notes_count = 20;
+
     const redirectToSettings = () => {
         navigate('/profile/settings');
     };
@@ -32,38 +38,38 @@ const Profile = () => {
         <div className='page'>
             <div className='page-content'>
                 {isLoggedIn ? (
-                    <div>
+                    <div className='profile-page'>
                         <h2>{userName}</h2>
                         <p className='bio'>and the stadium is where I feel at home</p>
                         <div className='profile-numbers'>
-                            <h4>
-                                23<br /> followers
+                            <h4 className='profile-number'>
+                                {followers_count} followers
                             </h4>
-                            <h4>
-                                14<br /> following
+                            <h4 className='profile-number'>
+                                {followers_count} following
                             </h4>
-                            <h4>
-                                12<br /> concerts
+                            <h4 className='profile-number'>
+                                {concert_count} concerts
                             </h4>
-                            <h4>
-                                20<br />crowd notes
+                            <h4 className='profile-number'>
+                                {crowd_notes_count} crowd notes
                             </h4>
                         </div>
                         <div className='profile-display'>
                             <div className='profile-section'>
                                 <div className='profile-section-title'>
-                                    Favorites
+                                    FAVORITES
                                 </div>
                             </div>
                             <div className='profile-section'>
                                 <div className='profile-section-title'>
-                                    Recent events
+                                    RECENT EVENTS
                                 </div>
 
                             </div>
                             <div className='profile-section'>
                                 <div className='profile-section-title'>
-                                    Crowd Notes
+                                    CROWD NOTES
                                 </div>
                             </div>
                             {/* <div className='profile-section'>

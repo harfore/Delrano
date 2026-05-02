@@ -102,7 +102,7 @@ app.get('/health', (req, res) => res.status(200).send('OK'));
 // });
 
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, {
-//     swaggerUrl: 'http://localhost:3000/api-docs.json', // use absolute URL
+//     swaggerUrl: 'http://localhost:3000/api-docs.json',
 //     explorer: true
 // }));
 
@@ -112,7 +112,6 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/venues', venueRoutes);
 app.use('/api/tours', tourRoutes);
 app.use('/api/concerts', concertRoutes);
-// app.use('/api/city', cityRoutes);
 app.use('/api/cities', cityRoutes);
 
 // 9° Root endpoint

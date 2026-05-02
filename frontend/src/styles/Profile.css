@@ -1,3 +1,7 @@
+.profile-page {
+    width: 85vw;
+}
+
 .profile-display {
     margin-top: 2rem;
 }
@@ -5,6 +9,12 @@
 .profile-numbers {
     display: flex;
     justify-content: space-evenly;
+    /* gap: 1rem; */
+}
+
+.profile-number {
+    display: flex;
+    flex-direction: row;
 }
 
 .profile-section {
@@ -13,6 +23,6 @@
 }
 
 .profile-section-title {
-    border-bottom: 2px solid red;
-    font-weight: bold;
+    border-bottom: 2px solid #737373;
+    font-weight: 600;
 }

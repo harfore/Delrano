@@ -12,8 +12,9 @@ router.route('/')
     .post(createConcert)
     .get(async (req, res) => {
         try {
-            const { rows } = await pool.query(
-                `SELECT 
+            const { city, venue, after } = req.query;
+
+            let query = `SELECT 
                     c.concert_id AS id,
                     c.tour_id,
                     c.venue_id,
@@ -27,12 +28,44 @@ router.route('/')
                  JOIN venues v ON c.venue_id = v.venue_id
                  JOIN cities city ON v.city_id = city.city_id
                  ORDER BY c.date DESC
-                 `);
+                 `;
+
+            const conditions = [];
+            const values = [];
+
+            // filtering by city id
+            if (city) {
+                values.push(city);
+                conditions.push(`city.city_id= $${values.length}`)
+            };
+
+
+            // filtering by venue id
+            if (venue) {
+                values.push(venue);
+                conditions.push(`v.venue_id = $${values.length}`);
+            };
+
+            if (after) {
+                values.push(after);
+                conditions.push(`c.date >= $${values.length}`);
+            };
+
+            if (conditions.length > 0) {
+                query += ` WHERE ` + conditions.join(' AND ');
+            };
+
+            query += `ORDER BY c.date DESC`;
+
+
+            const { rows } = await pool.query();
+
             res.json(rows);
+
         } catch (err) {
             console.error('Failed to fetch concerts:', err);
             res.status(500).json({ error: 'Failed to fetch concerts' });
-        }
+        };
     });
 
 // get concert by ID
