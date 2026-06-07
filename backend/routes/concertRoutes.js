@@ -27,7 +27,6 @@ router.route('/')
                  JOIN tours t ON c.tour_id = t.tour_id
                  JOIN venues v ON c.venue_id = v.venue_id
                  JOIN cities city ON v.city_id = city.city_id
-                 ORDER BY c.date DESC
                  `;
 
             const conditions = [];
@@ -55,7 +54,7 @@ router.route('/')
                 query += ` WHERE ` + conditions.join(' AND ');
             };
 
-            query += `ORDER BY c.date DESC`;
+            query += ` ORDER BY c.date DESC`;
 
 
             const { rows } = await pool.query(query, values);
