@@ -171,6 +171,20 @@ nav.menu.open {
 
     .desktop-hamburger {
         display: block;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-menu-element {
+        border: none;
+        background-color: transparent;
+    }
+
+    .bar {
+        width: 2rem;
+        border: solid 1px #fff;
+        margin: 0.25rem 0;
+        background-color: #fff;
     }
 
     .desktop-menu.open {
@@ -203,6 +217,8 @@ nav.menu.open {
         text-align: center;
         margin: 0.5rem 0;
         border-radius: 20px;
+        font-weight: bold;
+        text-decoration: none;
     }
 
     .desktop-menu a:hover,

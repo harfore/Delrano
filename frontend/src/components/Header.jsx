@@ -86,11 +86,10 @@ function Header() {
                     {isLoggedIn ? (
                         <>
                             <NavLink to="/profile/settings">Settings</NavLink>
-                            <button onClick={handleLogout}>Log out</button>
+                            <a href="" onClick={handleLogout}>Log Out</a>
                         </>
                     ) : (
                         <>
-                            <NavLink to="/" className="desktop-nav-element">More</NavLink>
                             <NavLink to="/" className="desktop-nav-element">Articles</NavLink>
                         </>
                     )}

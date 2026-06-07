@@ -9,7 +9,7 @@
 .profile-numbers {
     display: flex;
     justify-content: space-evenly;
-    /* gap: 1rem; */
+    gap: 1rem;
 }
 
 .profile-number {

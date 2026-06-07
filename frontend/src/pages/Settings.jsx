@@ -31,7 +31,7 @@ const Settings = () => {
                                     <div className='input-set'>
                                         <div className='input-field'>
                                             <label htmlFor="Email" className='input-label'>Contact Email</label>
-                                            <input type="text" placeholder='remiharfoush@gmail.com' />
+                                            <input type="text" placeholder='email@example.com' />
                                         </div>
                                     </div>
                                     <div className='input-set'>

@@ -72,11 +72,6 @@ const Profile = () => {
                                     CROWD NOTES
                                 </div>
                             </div>
-                            {/* <div className='profile-section'>
-                                <div className='profile-section-title'>
-
-                                </div>
-                            </div> */}
                         </div>
                         <NavLink to="/profile/settings">
                             <button className="button">

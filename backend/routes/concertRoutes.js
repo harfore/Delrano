@@ -58,7 +58,7 @@ router.route('/')
             query += `ORDER BY c.date DESC`;
 
 
-            const { rows } = await pool.query();
+            const { rows } = await pool.query(query, values);
 
             res.json(rows);
 
