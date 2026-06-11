@@ -6,6 +6,7 @@ import NewYorkConcerts from './components/NewYorkTester';
 import Renovation from './components/Renovation';
 import Settings from './pages/Settings';
 import ConcertsByCity from './pages/ConcertsByCity';
+import ConcertDetail from './components/ConcertDetail';
 
 const routes = [
     { path: '/', element: <Renovation /> },
@@ -15,7 +16,8 @@ const routes = [
     { path: '/dev/tests', element: <TestPage /> },
     { path: '/dev/tests/newyork', element: <NewYorkConcerts /> },
     { path: '/profile/settings', element: <Settings /> },
-    { path: '/concerts/:cityId', element: < ConcertsByCity /> }
+    { path: '/cities/:cityId', element: < ConcertsByCity /> },
+    { path: 'concerts/:concertId', element: <ConcertDetail /> },
 ];
 
 export default routes;

@@ -1,3 +1,14 @@
+.concerts-by-city {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .concert-in-city {
-    margin: 2rem;
+    flex: 1 1 200px;
+}
+
+.tour-name,
+.concert-date {
+    text-align: center;
 }

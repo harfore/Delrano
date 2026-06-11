@@ -58,18 +58,18 @@ const Profile = () => {
                         <div className='profile-display'>
                             <div className='profile-section'>
                                 <div className='profile-section-title'>
-                                    FAVORITES
+                                    <h4>Favorites</h4>
                                 </div>
                             </div>
                             <div className='profile-section'>
                                 <div className='profile-section-title'>
-                                    RECENT EVENTS
+                                    <h4>Recent events</h4>
                                 </div>
 
                             </div>
                             <div className='profile-section'>
                                 <div className='profile-section-title'>
-                                    CROWD NOTES
+                                    <h4>Crowd notes</h4>
                                 </div>
                             </div>
                         </div>

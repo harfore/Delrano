@@ -9,3 +9,9 @@ export const getConcerts = async (filters = {}) => {
     if (!res.ok) throw new Error("Failed to fetch concerts, filters: ", filters);
     return res.json();
 };
+
+export const getConcertById = async (id) => {
+    const res = await fetch(`${CONCERTS_ENDPOINT}/${id}`);
+    if (!res.ok) throw new Error('Concert not found');
+    return res.json();
+};

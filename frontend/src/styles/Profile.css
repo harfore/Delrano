@@ -25,4 +25,9 @@
 .profile-section-title {
     border-bottom: 2px solid #737373;
     font-weight: 600;
+    padding-bottom: 0.2rem;
+}
+
+.profile-section-title h4 {
+    margin: 0;
 }
